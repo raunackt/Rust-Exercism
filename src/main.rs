@@ -4,6 +4,7 @@ mod lib;
 use colored::*;
 use lib::assembly_line;
 use lib::lasagna;
+use lib::semi_structuted_logs;
 
 fn main() {
     //Execting functions for Lasagna. Using lasagna and colored mods
@@ -40,5 +41,24 @@ fn main() {
         assembly_line::working_items_per_minute(4)
             .to_string()
             .green()
+    );
+    println!();
+
+    //Semi structured logs
+    println!("{}", "Log Level".yellow());
+    let log_error = semi_structuted_logs::LogLevel::Error;
+    println!(
+        "{}",
+        semi_structuted_logs::LogLevel::log(log_error, "There was an unexpected error").red()
+    );
+    println!(
+        "{}",
+        semi_structuted_logs::LogLevel::info("There have been changes to the file").blue()
+    );
+    let log_warning = semi_structuted_logs::LogLevel::Warning;
+    println!(
+        "{}",
+        semi_structuted_logs::LogLevel::log(log_warning, "There are unused compotents")
+            .bright_yellow()
     );
 }

@@ -51,3 +51,44 @@ pub mod assembly_line {
         assert_eq!(working_items_per_minute(10), 28);
     }
 }
+
+//Created mod for Semi Structured Logs
+pub mod semi_structuted_logs {
+    #[derive(Debug)]
+    pub enum LogLevel {
+        Info,
+        Warning,
+        Error,
+    }
+
+    impl LogLevel {
+        pub fn log(log: LogLevel, message: &str) -> String {
+            match log {
+                LogLevel::Info => LogLevel::info(message),
+                LogLevel::Warning => String::from("[WARNING]: ") + message,
+                LogLevel::Error => String::from("[ERROR]: ") + message,
+            }
+        }
+
+        pub fn info(message: &str) -> String {
+            String::from("[INFO]: ") + message
+        }
+    }
+
+    #[cfg(test)]
+    #[test]
+    fn logs_level() {
+        assert_eq!(
+            LogLevel::log(LogLevel::Error, &"Stack Overflow"),
+            "[ERROR]: Stack Overflow"
+        );
+        assert_eq!(
+            LogLevel::log(LogLevel::Info, &"Timezone changed"),
+            "[INFO]: Timezone changed"
+        );
+        assert_eq!(
+            LogLevel::log(LogLevel::Warning, &"Unused variables"),
+            "[WARNING]: Unused variables"
+        );
+    }
+}
