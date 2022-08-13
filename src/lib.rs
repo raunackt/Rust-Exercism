@@ -1,5 +1,6 @@
+//Creating a module for Lasagna
 pub mod lasagna {
-
+    //Constants for calcuations
     const TOTAL_MINUTES: i8 = 40;
     const LAYER_PREP: i8 = 2;
 
@@ -17,22 +18,23 @@ pub mod lasagna {
     }
 }
 
+//Creating a module for Assemby Line functions -- inclusing tests
 pub mod assembly_line {
+    //Constant for car production count
+    const CAR_PROD_QUANT: u32 = 221;
 
-    const PROD_QUANT: u32 = 221;
-
-    pub fn production_rate_per_hour(prod_quant: u32) -> f64 {
+    pub fn production_rate_per_hour(prod_speed: u32) -> f64 {
         let mut success_rate: f64 = 1.0;
-        if prod_quant > 4 && prod_quant < 9 {
+        if prod_speed > 4 && prod_speed < 9 {
             success_rate = 0.9;
-        } else if prod_quant > 8 {
+        } else if prod_speed > 8 {
             success_rate = 0.77;
         }
-        (prod_quant * PROD_QUANT) as f64 * success_rate
+        (prod_speed * CAR_PROD_QUANT) as f64 * success_rate
     }
 
-    pub fn working_items_per_minute(prod_quant: u32) -> u32 {
-        (production_rate_per_hour(prod_quant) / 60.0) as u32
+    pub fn working_items_per_minute(prod_speed: u32) -> u32 {
+        (production_rate_per_hour(prod_speed) / 60.0) as u32
     }
 
     #[cfg(test)]
