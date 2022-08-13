@@ -25,9 +25,9 @@ pub mod assembly_line {
 
     pub fn production_rate_per_hour(prod_speed: u32) -> f64 {
         let mut success_rate: f64 = 1.0;
-        if prod_speed > 4 && prod_speed < 9 {
+        if prod_speed >=5 && prod_speed <=8 {
             success_rate = 0.9;
-        } else if prod_speed > 8 {
+        } else if prod_speed >=9 {
             success_rate = 0.77;
         }
         (prod_speed * CAR_PROD_QUANT) as f64 * success_rate
