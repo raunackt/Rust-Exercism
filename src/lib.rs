@@ -13,8 +13,8 @@ pub mod lasagna {
     pub fn preparation_time_in_minutes(layers: i8) -> i8 {
         layers * LAYER_PREP
     }
-    pub fn elapsed_time_in_minutes(layers: i8, mins_in_over: i8) -> i8 {
-        preparation_time_in_minutes(layers) + mins_in_over
+    pub fn elapsed_time_in_minutes(layers: i8, mins_in_oven: i8) -> i8 {
+        preparation_time_in_minutes(layers) + mins_in_oven
     }
 }
 

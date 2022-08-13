@@ -27,7 +27,7 @@ fn main() {
     );
     println!();
 
-    //Executing codes for assembbly line. Using assembly_line and colored mods
+    //Executing codes for assembly line. Using assembly_line and colored mods
     println!("{}", "Assembly Line".yellow());
     println!(
         "Prodcution rate at 4 speed is {}",
