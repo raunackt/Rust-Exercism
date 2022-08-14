@@ -1,10 +1,10 @@
 mod lib;
+mod rpg;
 
 //importing required crates
 use colored::*;
-use lib::assembly_line;
-use lib::lasagna;
-use lib::semi_structuted_logs;
+use lib::{assembly_line, lasagna, semi_structuted_logs};
+use rpg::Player;
 
 fn main() {
     //Execting functions for Lasagna. Using lasagna and colored mods
@@ -61,4 +61,15 @@ fn main() {
         semi_structuted_logs::LogLevel::log(log_warning, "There are unused compotents")
             .bright_yellow()
     );
+    println!();
+
+    //Role Playing Game: GG
+    println!("{}", "Role Playing Game".yellow());
+    let mut new_player = Player {
+        health: 23,
+        mana: Some(45),
+        level: 12,
+    };
+
+    println!("Damage caused: {}", new_player.cast_spell(3).to_string().green())
 }
